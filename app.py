@@ -1,5 +1,3 @@
-# app.py - Mushroom Classification Streamlit App (Regression Model for Diabetes Prediction)
-
 import streamlit as st
 import pandas as pd
 import pickle
@@ -23,7 +21,7 @@ st.header("Input Features")
 
 # Input fields for the features
 age = st.number_input("Age", min_value=-1.0, max_value=100.0, value=25.0)
-sex = st.number_input("Sex (0 = Female, 1 = Male)", min_value=0, max_value=1, value=0)
+sex = st.selectbox("Sex", options=[0, 1], format_func=lambda x: "Female" if x == 0 else "Male")
 bmi = st.number_input("BMI", min_value=0.0, max_value=50.0, value=22.0)
 bp = st.number_input("Blood Pressure", min_value=0.0, max_value=200.0, value=70.0)
 s1 = st.number_input("S1", min_value=-10.0, max_value=10.0, value=0.0)
@@ -53,4 +51,3 @@ if st.button("Predict"):
     
     st.subheader("Predicted Diabetes Progression:")
     st.write(f"The predicted diabetes progression value is: {prediction[0]:.2f}")
-
